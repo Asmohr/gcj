@@ -1,5 +1,7 @@
 package com.github.adam6806.gcj.minimumscalarproject;
 
+import com.github.adam6806.gcj.Helper;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,18 +23,20 @@ public class MinimumScalarProject {
 
     public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
+        System.out.println("Input file: " + FILE_NAME);
         for (int i = 1; i <= numCases; i++) {
-            System.out.println("Performing algorithm on Case #" + i);
-            stringBuilder.append("Case #" + i + ": " + doAlgorithm(scanner) + "\n");
+            String result = "Case #" + i + ": " + doAlgorithm(scanner) + "\n";
+            System.out.print(result);
+            stringBuilder.append(result);
         }
         return stringBuilder.toString();
     }
 
     public static String doAlgorithm(Scanner scanner) {
         int vectorLength = Integer.parseInt(scanner.nextLine());
-        ArrayList<BigInteger> numArray1 = convertToInt(scanner.nextLine().split(" "));
+        ArrayList<BigInteger> numArray1 = Helper.convertToBigIntList(scanner.nextLine().split(" "));
         Collections.sort(numArray1);
-        ArrayList<BigInteger> numArray2 = convertToInt(scanner.nextLine().split(" "));
+        ArrayList<BigInteger> numArray2 = Helper.convertToBigIntList(scanner.nextLine().split(" "));
         Collections.sort(numArray2);
         Collections.reverse(numArray2);
         BigInteger total = BigInteger.valueOf(0);
@@ -44,14 +48,6 @@ public class MinimumScalarProject {
         }
 
         return total.toString();
-    }
-
-    private static ArrayList<BigInteger> convertToInt(String[] nums) {
-        ArrayList<BigInteger> numList = new ArrayList<BigInteger>();
-        for (int i = 0; i < nums.length; i++) {
-            numList.add(BigInteger.valueOf(Integer.parseInt(nums[i])));
-        }
-        return numList;
     }
 
     public static File getInputFile() {

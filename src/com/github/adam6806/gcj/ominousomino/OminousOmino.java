@@ -1,6 +1,4 @@
-package com.github.adam6806.gcj.storecredit;
-
-import com.github.adam6806.gcj.Helper;
+package com.github.adam6806.gcj.ominousomino;
 
 import java.io.File;
 import java.io.FileReader;
@@ -12,9 +10,9 @@ import java.util.Scanner;
 /**
  * Created by Adam on 4/21/2015.
  */
-public class StoreCredit {
-    private static final String FILE_NAME = "A-large-practice.in";
-    private static final URL FILE_PATH = StoreCredit.class.getResource(FILE_NAME);
+public class OminousOmino {
+    private static final String FILE_NAME = "test.in";
+    private static final URL FILE_PATH = OminousOmino.class.getResource(FILE_NAME);
     private static final File INPUT_FILE = new File(FILE_PATH.getPath());
     private static final File OUTPUT_FILE = new File(FILE_PATH.getPath() + ".out");
 
@@ -30,28 +28,8 @@ public class StoreCredit {
     }
 
     public static String doAlgorithm(Scanner scanner) {
-        int credit = Integer.parseInt(scanner.nextLine());
-        int numItems = Integer.parseInt(scanner.nextLine());
-        String[] strPrices = scanner.nextLine().split(" ");
-        int[] prices = Helper.convertToIntArray(strPrices);
-        int answer1 = 0;
-        int answer2 = 0;
-        for (int i = 0; i < numItems; i++) {
-            for (int j = 0; j < numItems; j++) {
-                if (i != j && credit == prices[i] + prices[j]) {
-                    if (i < j) {
-                        answer1 = i;
-                        answer2 = j;
-                    } else {
-                        answer1 = j;
-                        answer2 = i;
-                    }
-                    break;
-                }
-            }
-        }
-        String answer = (answer1 + 1) + " " + (answer2 + 1);
-        return answer;
+
+        return "";
     }
 
     public static File getInputFile() {

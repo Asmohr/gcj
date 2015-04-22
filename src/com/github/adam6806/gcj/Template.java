@@ -20,8 +20,9 @@ public class Template {
         StringBuilder stringBuilder = new StringBuilder();
         System.out.println("Input file: " + FILE_NAME);
         for (int i = 1; i <= numCases; i++) {
-            System.out.println("Performing algorithm on Case #" + i);
-            stringBuilder.append("Case #" + i + ": " + doAlgorithm(scanner) + "\n");
+            String result = "Case #" + i + ": " + doAlgorithm(scanner) + "\n";
+            System.out.print(result);
+            stringBuilder.append(result);
         }
         return stringBuilder.toString();
     }
