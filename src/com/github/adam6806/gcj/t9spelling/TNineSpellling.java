@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -11,10 +12,10 @@ import java.util.Scanner;
  * Created by Adam on 4/21/2015.
  */
 public class TNineSpellling {
-    private static final String PROJECT_NAME = "t9spelling";
-    private static final String FILE_NAME = "C-large-practice";
-    private static final File INPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".in");
-    private static final File OUTPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".out");
+    private static final String FILE_NAME = "C-large-practice.in";
+    private static final URL FILE_PATH = TNineSpellling.class.getResource(FILE_NAME);
+    private static final File INPUT_FILE = new File(FILE_PATH.getPath());
+    private static final File OUTPUT_FILE = new File(FILE_PATH.getPath() + ".out");
 
     public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
