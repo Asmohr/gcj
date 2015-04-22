@@ -52,12 +52,12 @@ public class MinimumScalarProject {
         return total.toString();
     }
 
-    private ArrayList<BigInteger> convertToInt(String[] prices) {
-        ArrayList<BigInteger> intPrices = new ArrayList<BigInteger>();
-        for (int i = 0; i < prices.length; i++) {
-            intPrices.add(BigInteger.valueOf(Integer.parseInt(prices[i])));
+    private ArrayList<BigInteger> convertToInt(String[] nums) {
+        ArrayList<BigInteger> numList = new ArrayList<BigInteger>();
+        for (int i = 0; i < nums.length; i++) {
+            numList.add(BigInteger.valueOf(Integer.parseInt(nums[i])));
         }
-        return intPrices;
+        return numList;
     }
 
     public File getInputFile() {
