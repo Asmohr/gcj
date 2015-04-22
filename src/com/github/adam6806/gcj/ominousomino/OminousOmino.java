@@ -11,10 +11,12 @@ import java.util.Scanner;
  * Created by Adam on 4/21/2015.
  */
 public class OminousOmino {
-    private static final String FILE_NAME = "test.in";
-    private static final URL FILE_PATH = OminousOmino.class.getResource(FILE_NAME);
+    private static final String FILE_NAME = "D-small";
+    private static final URL FILE_PATH = OminousOmino.class.getResource(FILE_NAME + "-practice.in");
     private static final File INPUT_FILE = new File(FILE_PATH.getPath());
     private static final File OUTPUT_FILE = new File(FILE_PATH.getPath() + ".out");
+    private static final String GABRIEL = "GABRIEL";
+    private static final String RICHARD = "RICHARD";
 
     public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,8 +30,19 @@ public class OminousOmino {
     }
 
     public static String doAlgorithm(Scanner scanner) {
-
-        return "";
+        String line = scanner.nextLine();
+        String[] array = line.split(" ");
+        System.out.println(line);
+        int size = Integer.parseInt(array[0]);
+        int row = Integer.parseInt(array[1]);
+        int column = Integer.parseInt(array[2]);
+        String result = "";
+        if (size * 2 <= (row * column) && (row * column) % size == 0) {
+            result = GABRIEL;
+        } else {
+            result = RICHARD;
+        }
+        return result;
     }
 
     public static File getInputFile() {
