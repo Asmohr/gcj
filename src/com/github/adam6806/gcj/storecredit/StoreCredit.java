@@ -19,6 +19,7 @@ public class StoreCredit {
     public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i <= numCases; i++) {
+            System.out.println("Performing algorithm on Case #" + i);
             stringBuilder.append("Case #" + i + ": " + doAlgorithm(scanner) + "\n");
         }
         return stringBuilder.toString();

@@ -8,7 +8,6 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -23,6 +22,7 @@ public class MinimumScalarProject {
     public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i <= numCases; i++) {
+            System.out.println("Performing algorithm on Case #" + i);
             stringBuilder.append("Case #" + i + ": " + doAlgorithm(scanner) + "\n");
         }
         return stringBuilder.toString();
@@ -33,18 +33,8 @@ public class MinimumScalarProject {
         ArrayList<BigInteger> numArray1 = convertToInt(scanner.nextLine().split(" "));
         Collections.sort(numArray1);
         ArrayList<BigInteger> numArray2 = convertToInt(scanner.nextLine().split(" "));
-        Collections.sort(numArray2, new Comparator<BigInteger>() {
-            @Override
-            public int compare(BigInteger i1, BigInteger i2) {
-                if (i1.compareTo(i2) == 1) {
-                    return -1;
-                } else if (i1.compareTo(i2) == -1) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        });
+        Collections.sort(numArray2);
+        Collections.reverse(numArray2);
         BigInteger total = BigInteger.valueOf(0);
         for (int i = 0; i < vectorLength; i++) {
             BigInteger num1 = numArray1.get(i);
