@@ -1,6 +1,9 @@
 package com.github.adam6806.gcj.t9spelling;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -8,12 +11,12 @@ import java.util.Scanner;
  * Created by Adam on 4/21/2015.
  */
 public class TNineSpellling {
-    private final String PROJECT_NAME = "t9spelling";
-    private final String FILE_NAME = "C-large-practice";
-    private final File INPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".in");
-    private final File OUTPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".out");
+    private static final String PROJECT_NAME = "t9spelling";
+    private static final String FILE_NAME = "C-large-practice";
+    private static final File INPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".in");
+    private static final File OUTPUT_FILE = new File("src\\com\\github\\adam6806\\gcj\\" + PROJECT_NAME + "\\" + FILE_NAME + ".out");
 
-    public String getResult(int numCases, Scanner scanner) {
+    public static String getResult(int numCases, Scanner scanner) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 1; i <= numCases; i++) {
             stringBuilder.append("Case #" + i + ": " + doAlgorithm(scanner) + "\n");
@@ -21,7 +24,7 @@ public class TNineSpellling {
         return stringBuilder.toString();
     }
 
-    public String doAlgorithm(Scanner scanner) {
+    public static String doAlgorithm(Scanner scanner) {
         char[] words = scanner.nextLine().toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         HashMap<Character, String> keyMap = getKeyPadMap();
@@ -42,7 +45,7 @@ public class TNineSpellling {
         return stringBuilder.toString();
     }
 
-    public HashMap<Character, String> getKeyPadMap() {
+    public static HashMap<Character, String> getKeyPadMap() {
         HashMap<Character, String> keyMap = new HashMap<Character, String>();
         keyMap.put('a', "2");
         keyMap.put('b', "22");
@@ -74,11 +77,27 @@ public class TNineSpellling {
         return keyMap;
     }
 
-    public File getInputFile() {
+    public static File getInputFile() {
         return INPUT_FILE;
     }
 
-    public File getOutputFile() {
+    public static File getOutputFile() {
         return OUTPUT_FILE;
+    }
+
+    public static void main(String[] args) {
+
+        try {
+            Scanner scanner = new Scanner(new FileReader(getInputFile()));
+            PrintWriter printWriter = new PrintWriter(new FileWriter(getOutputFile()));
+            int numOfCases = Integer.parseInt(scanner.nextLine());
+            String answer = getResult(numOfCases, scanner);
+            printWriter.write(answer);
+            scanner.close();
+            printWriter.flush();
+            printWriter.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
     }
 }
