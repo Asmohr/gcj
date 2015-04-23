@@ -14,6 +14,7 @@ import java.util.Set;
  * Created by Adam on 4/21/2015.
  */
 public class OminousOmino {
+
     private static final String FILE_NAME_LETTER = "D";
     private static final String FILE_NAME_SIZE = "small";
     private static final String FILE_NAME = FILE_NAME_LETTER + "-" + FILE_NAME_SIZE;
@@ -41,42 +42,28 @@ public class OminousOmino {
         int k = Integer.parseInt(array[0]);
         int n = Integer.parseInt(array[1]);
         int m = Integer.parseInt(array[2]);
-        String result = "";
-        //Normalize where n>=m always
-        if(m>n) {
-            int x = n;
-            n = m;
-            m = x;
-        }
-        if(k==1) {
-            result = GABRIEL;
-        } else if(m==1) {
-            if((n==1 && k>=2) || (n==3 && k>=2) || (n>3 && k>=3)) {
-                result = RICHARD;
-            } else {
-                result = GABRIEL;
+        int s = Math.min(m, n);
+        int l = Math.max(m, n);
+        
+        if ((m * n) % k != 0) {
+            return RICHARD;
+        } else if (k == 3 && s == 1) {
+            return RICHARD;
+        } else if (k == 4 && s <= 2) {
+            return RICHARD;
+        } else if (k == 5) {
+            if (s <= 2) {
+                return RICHARD;
+            } else if (s == 3 && l == 5) {
+                return RICHARD;
             }
-        } else {
-            Set<Integer> richardWinsIndexes = new HashSet();
-            for (int i = 2; i < k; i++) {
-                if(m>i) {
-                    if(m%i!=0) richardWinsIndexes.add(i);
-                } else {
-                    if(i%m!=0) richardWinsIndexes.add(i);
-                }
-                if(n>i) {
-                    if(n%i!=0) richardWinsIndexes.add(i);
-                } else {
-                    if(i%n!=0) richardWinsIndexes.add(i);
-                }
-            }
-            if(richardWinsIndexes.contains(k)) {
-                result = RICHARD;
-            } else {
-                result = GABRIEL;
-            }
-        }
-        return result;
+        } else if (k == 6 && s <= 3) {
+            return RICHARD;
+        } else if (k >= 7) {
+            return RICHARD;
+        } 
+        
+        return GABRIEL;
     }
 
     public static File getInputFile() {
