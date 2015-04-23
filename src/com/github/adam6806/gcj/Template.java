@@ -11,8 +11,10 @@ import java.util.Scanner;
  * Created by Adam on 4/21/2015.
  */
 public class Template {
-    private static final String FILE_NAME = "B-large-practice.in";
-    private static final URL FILE_PATH = Template.class.getResource(FILE_NAME);
+    private static final String FILE_NAME_LETTER = "D";
+    private static final String FILE_NAME_SIZE = "small";
+    private static final String FILE_NAME = FILE_NAME_LETTER + "-" + FILE_NAME_SIZE;
+    private static final URL FILE_PATH = Template.class.getResource(FILE_NAME + "-practice.in");
     private static final File INPUT_FILE = new File(FILE_PATH.getPath());
     private static final File OUTPUT_FILE = new File(FILE_PATH.getPath() + ".out");
 
